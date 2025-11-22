@@ -25,7 +25,7 @@ export default function Page() {
                             most comprehensive resource for American citizens who desire to live and grow abroad.
                             No matter your experience with foreign travel or degree of permanence you wish to make
                             it, your chosen Exodus pathway will be your step-by-step guide to education and planing
-                            for a life outside of the United States. 
+                            for a life outside of the United States.
                         </div>
                     </div>
                 </div>
