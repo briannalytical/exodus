@@ -60,7 +60,7 @@ export default function Home() {
                         Exodus
                     </h1>
                     <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                        You can leave. For how long is up to you.
+                        You <i>can</i> leave. For how long is up to you.
                     </p>
                 </div>
 
