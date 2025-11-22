@@ -26,7 +26,7 @@ export default function PathPage({ params }) {
                     <div className="bg-white rounded-lg shadow-lg p-8">
                         <h2 className="text-2xl font-semibold mb-4">Coming Soon</h2>
                         <p className="text-gray-600">
-                            We're building out the assessment, pathway, and checklist features for this path.
+                            Were building out the assessment, pathway, and checklist features for this path.
                         </p>
                     </div>
                 </div>
