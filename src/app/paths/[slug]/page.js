@@ -1,3 +1,5 @@
+import VisaMap from '../../components/VisaMap';
+
 export default function PathPage({ params }) {
     const { slug } = params;
 
@@ -15,7 +17,7 @@ export default function PathPage({ params }) {
     return (
         <main className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
             <div className="container mx-auto px-4 py-16">
-                <div className="max-w-4xl mx-auto">
+                <div className="max-w-6xl mx-auto">
                     <h1 className="text-4xl font-bold text-gray-900 mb-6">
                         {title}
                     </h1>
@@ -23,10 +25,17 @@ export default function PathPage({ params }) {
                         Your personalized pathway for {title.toLowerCase()}.
                     </p>
 
+                    {slug === 'sabbatical' && (
+                        <div className="mb-8">
+                            <h2 className="text-2xl font-semibold mb-4">Visa Requirements by Country</h2>
+                            <VisaMap />
+                        </div>
+                    )}
+
                     <div className="bg-white rounded-lg shadow-lg p-8">
                         <h2 className="text-2xl font-semibold mb-4">Coming Soon</h2>
                         <p className="text-gray-600">
-                            Were building out the assessment, pathway, and checklist features for this path.
+                            We&#39;re building out the assessment, pathway, and checklist features for this path.
                         </p>
                     </div>
                 </div>
