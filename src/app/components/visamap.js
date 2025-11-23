@@ -1,26 +1,32 @@
 'use client';
 
-import { useState } from 'react';
-import Map, { Source, Layer } from 'react-map-gl';
-import 'mapbox-gl/dist/mapbox-gl.css';
+import { MapContainer, TileLayer } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
+import { useEffect } from 'react';
 
 export default function VisaMap() {
-    const [viewState, setViewState] = useState({
-        longitude: 0,
-        latitude: 20,
-        zoom: 1.5
-    });
+    useEffect(() => {
+        // Fix for default marker icon
+        delete L.Icon.Default.prototype._getIconUrl;
+        L.Icon.Default.mergeOptions({
+            iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
+            iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
+            shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
+        });
+    }, []);
 
     return (
         <div className="w-full h-[600px] rounded-lg overflow-hidden shadow-lg">
-            <Map
-                {...viewState}
-                onMove={evt => setViewState(evt.viewState)}
-                mapStyle="mapbox://styles/mapbox/light-v11"
-                mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_TOKEN}
+            <MapContainer
+                center={[20, 0]}
+                zoom={2}
+                style={{ height: '100%', width: '100%' }}
             >
-                {/* We'll add country layers here */}
-            </Map>
+                <TileLayer
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                />
+            </MapContainer>
         </div>
     );
 }

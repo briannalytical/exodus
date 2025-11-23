@@ -1,7 +1,10 @@
 import VisaMap from '../../components/VisaMap';
 
-export default function PathPage({ params }) {
-    const { slug } = params;
+export default async function PathPage({ params }) {
+    const resolvedParams = await params;
+    const slug = resolvedParams.slug;
+
+    console.log('Slug value:', slug);
 
     const pathTitles = {
         'sabbatical': 'Sabbatical',
@@ -13,6 +16,9 @@ export default function PathPage({ params }) {
     };
 
     const title = pathTitles[slug] || 'Path';
+
+    console.log('Title:', title);
+    console.log('Should show map?', slug === 'sabbatical');
 
     return (
         <main className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
@@ -35,7 +41,7 @@ export default function PathPage({ params }) {
                     <div className="bg-white rounded-lg shadow-lg p-8">
                         <h2 className="text-2xl font-semibold mb-4">Coming Soon</h2>
                         <p className="text-gray-600">
-                            We&#39;re building out the assessment, pathway, and checklist features for this path.
+                            We're building out the assessment, pathway, and checklist features for this path.
                         </p>
                     </div>
                 </div>
