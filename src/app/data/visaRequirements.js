@@ -1,6 +1,10 @@
 // Visa requirements for US passport holders
+// Source: Various government sources as of 2024
 
 export const visaRequirements = {
+    // United States - Starting point
+    'United States': { type: 'home', days: null, notes: 'Your starting point' },
+
     // Visa-free / Passport only (90+ days typically)
     'France': { type: 'visa-free', days: 90, notes: 'Schengen area' },
     'Germany': { type: 'visa-free', days: 90, notes: 'Schengen area' },
@@ -45,6 +49,8 @@ export const getCountryColor = (countryName) => {
     if (!visa) return '#E5E7EB'; // Default gray for unknown
 
     switch (visa.type) {
+        case 'home':
+            return '#2C7A7B'; // Darker blue-green for home country
         case 'visa-free':
             return '#4D9B9B'; // Blue-green
         case 'visa-required':

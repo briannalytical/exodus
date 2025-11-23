@@ -1,10 +1,8 @@
-import VisaMap from '../../components/VisaMap';
+import VisaMapWrapper from '../../components/VisaMapWrapper';
 
 export default async function PathPage({ params }) {
     const resolvedParams = await params;
     const slug = resolvedParams.slug;
-
-    console.log('Slug value:', slug);
 
     const pathTitles = {
         'sabbatical': 'Sabbatical',
@@ -16,9 +14,6 @@ export default async function PathPage({ params }) {
     };
 
     const title = pathTitles[slug] || 'Path';
-
-    console.log('Title:', title);
-    console.log('Should show map?', slug === 'sabbatical');
 
     return (
         <main className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
@@ -34,7 +29,7 @@ export default async function PathPage({ params }) {
                     {slug === 'sabbatical' && (
                         <div className="mb-8">
                             <h2 className="text-2xl font-semibold mb-4">Visa Requirements by Country</h2>
-                            <VisaMap />
+                            <VisaMapWrapper />
                         </div>
                     )}
 

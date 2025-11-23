@@ -12,13 +12,21 @@ export default function VisaMap() {
         // Fetch world countries GeoJSON
         fetch('https://raw.githubusercontent.com/datasets/geo-countries/master/data/countries.geojson')
             .then(response => response.json())
-            .then(data => setGeoData(data))
+            .then(data => {
+                console.log('GeoJSON loaded with', data.features?.length, 'countries');
+                setGeoData(data);
+            })
             .catch(error => console.error('Error loading GeoJSON:', error));
     }, []);
 
     const countryStyle = (feature) => {
-        const countryName = feature.properties.ADMIN;
+        const countryName = feature.properties.name; // Changed from ADMIN to name
         const color = getCountryColor(countryName);
+
+        // Log matches for debugging
+        if (color !== '#E5E7EB') {
+            console.log('MATCH:', countryName, '→', color);
+        }
 
         return {
             fillColor: color,
@@ -29,7 +37,7 @@ export default function VisaMap() {
     };
 
     const onEachCountry = (country, layer) => {
-        const countryName = country.properties.ADMIN;
+        const countryName = country.properties.name; // Changed from ADMIN to name
         const visa = visaRequirements[countryName];
 
         if (visa) {
